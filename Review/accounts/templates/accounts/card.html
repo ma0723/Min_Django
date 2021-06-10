@@ -1,0 +1,16 @@
+<div class="row row-cols-1 row-cols-md-3 g-4">
+  {% for review in person.review_set.all %}
+    {% if review.image %}
+      <div class="col">
+        <div class="card">
+          <a href="{% url 'community:detail' review.pk %}">
+            <img src="{{ review.image.url }}" class="card-img-top" alt="{{ review.image }}">
+          </a>
+          <div class="card-body">
+            <h5 class="card-title"><a href="{% url 'community:detail' review.pk %}" class="text-dark">{{ review.title }}</a></h5>
+          </div>
+        </div>
+      </div>
+    {% endif %}
+  {% endfor %}
+</div>

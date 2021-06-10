@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% load bootstrap5 %}
+{% load socialaccount %}
+
+{% block content %}
+  <h1 class="fw-bold">LOGIN PAGE</h1>
+  <hr>
+  <form action="" method="POST">
+    {% csrf_token %}
+    {% bootstrap_form form %}
+    <button class="btn btn-primary mt-3" type="submit">Login</button>
+  </form>
+  <hr>
+  <a href="{% url 'community:index' %}" class="btn btn-light">BACK</a>
+  <a href="{% provider_login_url "google" next="/community/" %}" class="btn btn-primary">Google Login</a>
+{% endblock %}

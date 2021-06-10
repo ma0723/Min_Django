@@ -1,0 +1,93 @@
+{% extends 'base.html' %}
+{% load bootstrap5 %}
+{% load static %}
+
+{% block content %}
+
+<h2 class="fw-bold">
+  <i class="fas fa-user-circle"></i>
+  {{ person.username }}님의 프로필
+</h2>
+<hr>
+<div class="row">
+  <div class="col-2">
+    <img src="{% static 'accounts\images\profile.jpg' %}" class="rounded-circle w-100 h-100" alt="다쿠아즈">
+  </div>
+  <div class="col-10 d-flex align-items-center">
+    <div class="col-3 d-flex flex-column align-items-center">
+      <p class="fs-3">게시물</p>
+      <p class="fs-2 fw-bold"> {{ person.review_set.all|length }}</p>
+    </div>
+    <div class="col-3 d-flex flex-column align-items-center">
+      <p class="fs-3">팔로잉</p> 
+      <p class="fs-2 fw-bold">{{ person.followings.all|length }}</p>
+    </div>
+    <div class="col-3 d-flex flex-column align-items-center">
+      <p class="fs-3">팔로워</p>
+      <p class="fs-2 fw-bold"> {{ person.followers.all|length }} </p>
+    </div>
+    <div class="col-3 d-flex flex-column align-items-center">
+      {% if request.user != person %}
+        <form action="{% url 'accounts:follow' person.pk %}" method="POST">
+          {% csrf_token %}
+          {% if request.user in person.followers.all %}
+            <button class="btn btn-light">Unfollow</button>
+          {% else %}
+            <button class="btn btn-primary">Follow</button>
+          {% endif %}
+        </form>
+      {% else %}
+         <a href="{% url 'community:create' %}" class="btn btn-primary">CREATE</a><br>
+      {% endif %}
+    </div>
+  </div>
+</div>
+<hr>
+
+<h2 class="fw-bold">
+  <i class="fas fa-photo-video"></i>
+  {{ person.username }}의 사진
+</h2>
+<br>
+{% include 'accounts/card.html' %}
+
+<br>
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <h2 class="fw-bold">
+        <i class="fas fa-edit"></i>
+        {{ person.username }}의 리뷰
+      </h2>
+      <ul>
+        {% for review in person.review_set.all %}
+          <li><a href="{% url 'community:detail' review.pk %}" class="text-dark">{{ review.title }}</a></li>
+        {% endfor %}
+      </ul>
+    </div>
+    <div class="col">
+    <h2 class="fw-bold">
+      <i class="far fa-comment-alt " style="color:black;"></i>
+      {{ person.username }}의 댓글
+    </h2>
+    <ul>
+      {% for comment in person.comment_set.all %}
+        <li>{{ comment.content }}</li>
+      {% endfor %}
+    </ul>
+    </div>
+    <div class="col">
+    <h2 class="fw-bold">
+      <i class="fas fa-heart" style="color:crimson;"></i>
+      {{ person.username }}의 좋아요
+    </h2>
+    <ul>
+      {% for review in person.like_reviews.all %}
+        <li><a href="{% url 'community:detail' review.pk %}" class="text-dark">{{ review.title }}</a></li>
+      {% endfor %}
+    </ul>
+    </div>
+  </div>
+</div>
+
+{% endblock content %}

@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% load bootstrap5 %}
+{% load bootstrap_pagination %}
+
+{% block content %}
+  <h1 class="fw-bold">INDEX PAGE</h1>
+  <hr>
+  {% for review in page_obj %}
+    <div class="row d-flex justify-content-around">
+      <div class="col">
+        <p><a href="{% url 'accounts:profile' review.user.pk %}" class="text-dark">Creator : {{ review.user }}</a></p>
+        <p>Review Number : {{ review.pk }}</p>
+        <p>Review Title :
+          <a href="{% url 'community:detail' review.pk %}" class="text-dark">{{ review.title }}</a>
+        </p>
+        <p>Movie Title : {{ review.movie_title }}</p>
+        <p><i class="fas fa-heart fa-lg" style="color:crimson;"></i> {{review.like.all|length}} LIKES</p>
+        <a href="{% url 'community:detail' review.pk %}" class="btn btn-light">DETAIL</a>
+      </div>
+      <div class="col d-flex justify-content-end">
+        {% if review.image %}
+          <img src="{{review.image.url}}" alt="{{review.image}}" class="w-50 h-90">
+        {% endif %}
+      </div>
+    </div>
+    <hr>
+  {% endfor %}
+
+  <div class="d-flex justify-content-center">
+    {% bootstrap_paginate page_obj range=5 %}
+  </div>
+
+{% endblock %}

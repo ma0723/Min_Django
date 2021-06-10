@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% load bootstrap5 %}
+
+{% block content %}
+  <h1 class="fw-bold">UPDATE PAGE</h1>
+  <hr>
+  <form action="" method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="REVIEW UPDATE">
+  </form>
+  <hr>
+  <a href="{% url 'community:index' %}" class="btn btn-light">BACK</a>
+{% endblock %}

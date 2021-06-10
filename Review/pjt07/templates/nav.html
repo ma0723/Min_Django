@@ -1,0 +1,57 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container-fluid d-flex justify-content-start align-items-center">
+    <a class="navbar-brand p-0 d-flex justify-content-start align-items-center" href="{% url 'community:index' %}"><i class="fas fa-home"></i></a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse d-flex justify-content-start align-items-center" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <form class="nav-link" action="{% url 'community:index' %}" method="GET">
+            <button type="submit" class="btn btn-light"><i class="fas fa-indent"></i> INDEX</button>
+          </form>
+        </li>
+        <li class="nav-item">
+          <form class="nav-link" action="{% url 'community:create' %}" method="GET">
+            <button type="submit" class="btn btn-light"><i class="fas fa-edit"></i> CREATE</button>
+          </form>
+        </li>
+        {% if request.user.is_authenticated %}
+          <li class="nav-item">
+            <form class="nav-link" action="{% url 'accounts:profile' request.user.pk %}" method="GET">
+              <button type="submit" class="btn btn-light"><i class="fas fa-user-circle"></i> MY PROFILE</button>
+            </form>
+          </li>
+          <li class="nav-item">
+            <form class="nav-link" action="{% url 'accounts:update' %}" method="GET">
+              <button type="submit" class="btn btn-light">회원정보수정</button>
+            </form>
+          </li>
+          <li class="nav-item">
+            <form class="nav-link" action="{% url 'accounts:logout' %}" method="POST">
+              {% csrf_token %}
+              <button type="submit" class="btn btn-light">로그아웃</button>
+            </form>
+          </li>
+          <li class="nav-item">
+            <form class="nav-link" action="{% url 'accounts:delete' %}" method="POST">
+              {% csrf_token %}
+              <button type="submit" class="btn btn-light">탈퇴</button>
+            </form>
+          </li>
+        {% else %}
+          <li class="nav-item">
+            <form class="nav-link" action="{% url 'accounts:login' %}" method="GET">
+              <button type="submit" class="btn btn-light">로그인</button>
+            </form>
+          </li>
+          <li class="nav-item">
+            <form class="nav-link" action="{% url 'accounts:signup' %}" method="GET">
+              <button type="submit" class="btn btn-light">회원가입</button>
+            </form>
+          </li>
+        {% endif %}
+      </ul>
+    </div>
+  </div>
+</nav>

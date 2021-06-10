@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% load bootstrap5 %}
+
+{% block content %}
+  <h1 class="fw-bold">CREATE PAGE</h1>
+  <hr>
+  <form action="" method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    {% bootstrap_form form %}
+    <input type="submit">
+  </form>
+  <hr>
+  <a href="{% url 'community:index' %}" class="btn btn-light">BACK</a>
+{% endblock %}
