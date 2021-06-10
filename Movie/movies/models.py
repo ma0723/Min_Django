@@ -1,0 +1,13 @@
+from django.db import models
+# from imagekit.models import ImageSpecField
+# from imagekit.processors import ResizeToFill
+# from imagekit.models import ProcessedImageField
+
+
+class Movie(models.Model):
+    title = models.CharField(max_length=100)
+    overview = models.TextField()
+    poster_path = models.CharField(max_length=500)
+
+    def __str__(self):
+        return self.title

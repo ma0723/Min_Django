@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% load bootstrap5 %}
+
+
+{% block content %}
+  {% if request.resolver_match.url_name == 'create' %}
+    <div class = "fs-3 text-center bg-info p-3">create</div>
+  {% else %}
+	<div class = "fs-3 text-center bg-warning p-3">update</div>
+  {% endif %}
+
+  <form action="" method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    
+    {% bootstrap_form form layout='horizontal' %}
+    <input class="btn btn-primary" type="submit">
+    
+  </form>
+
+  <hr>
+{% endblock content %}
