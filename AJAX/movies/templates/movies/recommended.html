@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h4>Recommended Movie</h4>
+<div>
+  {% for movie in recent_movies %}
+    <p>{{ movie.title }}</p>
+    <img src="{{ movie.poster_path }}" alt="">
+  {% endfor %}
+</div>
+<div>
+  {% for movie in old_movies %}
+    <p>{{ movie.title }}</p>
+    <img src="{{ movie.poster_path }}" alt="">
+  {% endfor %}
+</div>
+{% endblock %}
+
+{% comment %} <script>
+  const contents = new Vue({
+    el : '#contents',
+    data : {
+      
+    }
+    methods :{
+      'recent' : function(){
+
+      }
+
+    }
+
+  })
+</script> {% endcomment %}
+
