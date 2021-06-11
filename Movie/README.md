@@ -1,261 +1,72 @@
-# 05_pjt05
+# Project_Django_Movie
 
-#### 서울 3반 이민아 21.03.19
-
-
-
-> Django
+### 서울 3반 이민아 21.03.19
 
 
 
-### 0. pair pjt
-
-> navigator : 서울 3반 이민아
->
 > driver : 서울 3반 정희진
-
-### (1) git lab
-
-> git lab maintainer 추가
-
-###  (2) git bash
-
-> `db.sqlite3`는 git pull하는 경우 보이지 않아서 문제 상황 발생
 >
-> movies.json에 없는 항목을 field명으로 추가하지 않도록 유의(created_at)
-
-- [Terminal]
-
-```python
-git log 
-# 동일 상태 확인
-
-git push origin master
-git commit -m "update"
-# 작성한 사람
-
-git pull origin master 
-git clone 주소
-# 받는 사람
-# operational error (db.sqlite3는 그대로 전송이 안 됨, .gitignore)
-# movies.json으로 데이터를 보여준다
-```
-
-### (3) data
-
-> `pip install -r requirements.txt`
->
-> `python manage.py dumpdata app.class`
->
-> `python manage.py loaddata folder/name.json`
->
-> `python manage.py migrate`
-
-- [Terminal]
-
-```python
-pip install -r requirements.txt
-# 버젼 조회 및 다운로드
-# requirements.txt 조회 후 다운로드 및 설치
-
-python manage.py migrate
-
-python manage.py dumpdata movies.movie
-# django-admin dumpdata app.class
-# list안의 dictionary의 하나의 영화 정보 출력
-# python manage.py dumpdata --indent 4 movies.movie
-# 4칸 들여쓰기
-
-python manage.py dumpdata movies.movie > movies.json
-# movies.json 파일 생성 후 저장
-
-python manage.py loaddata movies/movies.json
-# fixtures/movies/movies.json 다운로드
-# templates/movies/index.html
-# templates/movies/new.html
-# templates/movies/detail.html
-```
-
-### (4) migrate
-
-> `python manage.py migrate` 
-
-### (5) 명령어
-
-> `django-admin startproject pjt05 `
->
-> `python manage.py startapp movies`
-
-- 프로젝트 생성 (pjt folder)
-  - django-admin startproject crud .(crud와 manage.py 바로 생성)
-  - django-admin startproject crud (crud/crud와 crud/manage.py 생성)
-- app 생성 (app folder)
-  - python manage.py startapp appname : app 생성
-- 서버 연결 (web)
-  - python manage.py runserver : 페이지 연결
-- 버젼 (requirements.txt)
-  - pip freeze > requirements.txt : 버젼 저장
-  - pip install -r requirements.txt : 버젼 조회 및 다운로드
-- 가상환경 (venv folder)
-  - python -m venv venv  :  가상환경 폴더 생성
-  - source venv/Scripts/activate : 가상환경 실행
-  - deactivate : 가상환경 해제
-  - pip list : 가상환경 설치된 목록 확인
-- 설치 (settings.py)
-  - pip install django : django 설치
-  - pip install django-extensions : django-extensions 설치 **(settings.py)**
-  - pip install Pillow : models.ImageField(blank=True) 이미지삽입 (models.py)
-  - pip install django-bootstrap-v5 : 부트스트랩 설치 (부트스트랩 form.py) **(settings.py)**
-  - pip install django-imagekit : 이미지 리사이즈 **(settings.py)**
-- 관리자 (admin.py)
-  - python manage.py createsuperuser : 관리자 계정 생성
-- DB 동기화 (app/migrations, app/fixtures)
-  - python manage.py makemigrations : migrations 폴더 아래 하위 파일 생성
-  - python manage.py migrate : 실행할 때마다 명령어
-  - python manage.py dumpdata articles.article > articles.json : fixtures  폴더 아래 articles.json으로 articles.article 정보 생성
-  - python manage.py loaddata articles/articles.json : fixtures 폴더 아래 articles/articles.json db에 불러오기
-  - python manage.py shell_plus : OOP 입력
-- python select interpreter
-
-### (6) 명세
-
-> 프로젝트 이름은 pjt05, 앱 이름은 movies
->
-> 모든 템플릿에서 상속받아 사용할 base.html을 작성 (프로젝트 및 앱 디렉토리와 동일한 위치에 생성, Bootstrap CDN을 포함)
+> navigator : 서울 3반 이민아
 
 
 
-### 1. virtual 
+---
 
-### (1) 가상환경 시작
-
-> `python -m venv venv`
-
-- [Terminal]
-
-```python
-python -m venv venv 
-# (python.exe 실행 / -module / module명 / 폴더이름)
-```
-
-### (2) 설치된 목록 확인
-
-> `Lib/site-packages/django`
-
-- [Terminal]
-
-```python
-pip list
-# site-packages 설치된 모든 목록
-```
-
-### (3) 가상화 실행
-
-> `source venv/Scripts/activate`
->
-> `deactivate`
-
-- [Terminal]
-
-```python
-source venv/Scripts/activate
-# 실행 상위폴덩/하위폴더명/실행
-(venv)
-# enter 이후 나타나는 메세지
-
-pip list
-# 설치된 목록 줄어든다
-
-deactivate
-# (venv)가 사라진다
-
-pip list
-# 설치된 목록 늘어난다
-```
-
-### (4) .gitignore 추가 
-
-> `gitignore.io` python windows 등 검색
->
-> `.gitignore` 생성 후 복사 붙이기 (`venv` , `db.sqlite` 포함)
-
-- [.gitignore]
-
-```python
-### Django ###
-*.log
-*.pot
-*.pyc
-__pycache__/
-local_settings.py
-db.sqlite3
-db.sqlite3-journal
-media
-
-# Environments
-.env
-.venv
-env/
-venv/
-ENV/
-env.bak/
-venv.bak/
-pythonenv*
-```
-
-### (5) django 가상환경
-
-- [Terminal]
-
-```python
-python -m venv venv 
-# (python.exe 실행 / -module / module명 / 폴더이름)
-
-source venv/Scripts/activate
-# 실행 상위폴덩/하위폴더명/실행
-
-pip install django
-# django 설치
-pip install django-extensions
-# django-extensions 설치
-
-python manage.py shell_plus
-# OOP 입력
-
-django-admin startproject pjt05 .
-# 프로젝트 설치
-# django-admin startproject crud .(crud와 manage.py 바로 생성)
-# django-admin startproject crud (crud/crud와 crud/manage.py 생성)
-
-python -m pip freeze
-# 버젼 확인 
-# 현재 사용하는 라이브러리를 고정하고 저장 pip freeze(출력)
-
-pip freeze > requirements.txt
-# 버젼 저장
-# requirements.txt 에 pip freeze 출력 결과 저장
-# requirements.txt가 없어도 생성
-
-pip install -r requirements.txt
-# 버젼 조회 및 다운로드
-# requirements.txt 조회 후 다운로드 및 설치
-
-python manage.py startapp movies
-# 앱 설치
-```
+## Index
 
 
 
-### 2. pjt05 (pjt) 
+- [Image](#image)
+- [pjt05 (Project)](#pjt05)
+- [movies (App)](#movies)
+- [후기](#후기)
 
-### (1) urls.py
 
-> `import include`
->
-> `from django.conf import settings
-> from django.conf.urls.static import static`
->
-> `+ static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)`
+
+---
+
+## Image
+
+### 1. movies/index (READ)
+
+![image-20210319160615664](README.assets/image-20210319160615664.png)
+
+### 2. movies/detail (READ)
+
+![image-20210319160706899](README.assets/image-20210319160706899.png)
+
+### 3. movies/create (CREATE)
+
+![image-20210319160805252](README.assets/image-20210319160805252.png)
+
+### 4. movies/update (UPDATE)
+
+### ![image-20210319160731769](README.assets/image-20210319160731769.png)
+
+### 5. movies/delete (DELETE)
+
+### 6. pjt05 (project)
+
+![image-20210319160929095](README.assets/image-20210319160929095.png)
+
+### 7. movies (app)
+
+![image-20210319160958533](README.assets/image-20210319160958533.png)
+
+
+
+---
+
+## pjt05 
+
+
+
+### 1. pjt05/urls.py
+
+- static 
+  - `from django.conf import settings
+    from django.conf.urls.static import static`
+  - ``+ static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)`
 
 - [urls.py]
 
@@ -273,23 +84,26 @@ urlpatterns = [
 
 
 
-### (2) settings.py 
+### 2. pjt05/settings.py 
 
-> `INSTALLED_APPS`  앱 등록
->
-> `LANGUAGE_CODE` 언어 설정
->
-> `TIME_ZONE` 시간 설정
->
-> `TEMPLATES` templates DIRS 설정
->
-> `STATIC_URL`
->
-> `STATICFILES_DIRS` BASE_DIR static 설정
->
-> `MEDIA_ROOT` BASE_DIR media 설정
->
-> `MEDIA_URL`
+- `INSTALLED_APPS`  앱 등록
+
+- `LANGUAGE_CODE` 언어 설정
+
+- `TIME_ZONE` 시간 설정
+
+- `TEMPLATES` templates DIRS 설정
+
+- media
+
+  - `MEDIA_ROOT` BASE_DIR media 설정
+
+  - `MEDIA_URL`
+
+- static
+
+  - `STATIC_URL`
+  - ``STATICFILES_DIRS` BASE_DIR static 설정
 
 - [settings.py]
 
@@ -338,19 +152,29 @@ MEDIA_URL = '/media/'
 
 
 
-### (3) templates/base.html
+### 3. pjt05/templates/base.html
 
-> CDN : `<link>` `<script>` / `{% load bootstrap5 %}` `{% bootstrap_css %}` `{% bootstrap_javascript %}`
->
-> css 상속 : `  {% block css %}{% endblock css %}`
->
-> nav태그 : `<nav></nav>`
->
-> a태그 : Movies(index) 혹은 New 버튼(create) 클릭시 url 이동
->
-> 다른 폴더 templates 상속 (div태그) : ` <div class="container"></div>` `{% block content %}{% endblock content %}`
->
-> 동일 폴더 templates 상속 (include) : `{% include 'nav.html' %}` `{% include 'footer.html' %}`
+- CDN : `<link>` `<script>` / `{% load bootstrap5 %}` `{% bootstrap_css %}` `{% bootstrap_javascript %}`
+
+- nav태그 : `<nav></nav>`
+
+- a태그 : Movies(index) 혹은 New 버튼(create) 클릭시 url 이동
+
+- css 상속 : `  {% block css %}{% endblock css %}`
+
+- templates 상속
+
+  - 다른 폴더 templates 상속 (div태그) 
+
+    ` <div class="container"></div>` 
+
+    `{% block content %}{% endblock content %}`
+
+  - 동일 폴더 templates 상속 (include) 
+
+    `{% include 'nav.html' %}` 
+
+    `{% include 'footer.html' %}`
 
 - [base.html]
 
@@ -397,19 +221,13 @@ MEDIA_URL = '/media/'
 
 
 
-### (4) static/stylesheets/style.css
+---
 
-- [style.css]
-
-```python
-# 생략
-```
+##  movies 
 
 
 
-### 3. movies (app)
-
-### (1) urls.py
+### 1. movies/urls.py
 
 - [urls.py]
 
@@ -429,7 +247,7 @@ urlpatterns = [
 
 
 
-### (2) fixtures/movies/movies.json
+### 2. movies/fixtures/movies
 
 - [movies.json]
 
@@ -441,13 +259,9 @@ urlpatterns = [
 
 
 
-### (3) models.py
+### 3. movies/models.py
 
-> `def __str__(self):` : 제목을 용이하게 보기 위한 함수 추가
->
-> `python manage.py makemigrations`
->
-> `python manage.py migrate`
+- `def __str__(self):` : 제목을 용이하게 보기 위한 함수 추가
 
 - [models.py]
 
@@ -472,15 +286,89 @@ class Movie(models.Model):
 
 
 
-### (4) views.py (view decorator)
+### 4. movies/forms.py
 
-> 오류, url 이동, html 이동 : `import render, redirect, get_object_or_404`
->
-> view decorator : `from django.views.decorators.http import require_safe, require_http_methods, require_POST`
->
-> models.py : `from .models import Movie`
->
-> forms.py : `from .forms import MovieForm`
+- models.py
+
+  `class Movie(models.Model):`
+
+  - `from .models import Movie` 
+  - `class MovieForm(forms.ModelForm):` `class Meta:`
+
+- forms.py
+
+  `forms.CharField()`
+
+  - 라벨 : `label`
+
+  - 너비 길이 등 속성 : `widget = forms.TextInput( attrs = {} )`
+
+  - 에러메세지 : `error_messages={'required': '제목은 필수 항목입니다',},`
+
+- [forms.py]
+
+```python
+from django import forms
+from .models import Movie
+
+class MovieForm(forms.ModelForm):
+    title = forms.CharField(
+        label='제목',
+        widget=forms.TextInput(
+            attrs={
+                'class': 'my-title form-control',
+                'placeholder': 'Enter the Title',
+                'maxlength': 100,
+            }
+        ),
+        error_messages={
+            'required': '제목은 필수 항목입니다',
+        },
+    )
+    overview = forms.CharField(
+        label='줄거리',
+        widget=forms.Textarea(
+            attrs={
+                'class': 'my-content form-control',
+                'placeholder': 'Enter the Content',
+                'rows': 5,
+                'cols': 30,
+            }
+        ),
+        error_messages={
+            'required': '줄거리는 필수 항목입니다',
+        },
+    )
+    poster_path = forms.CharField(
+        label='포스터 경로',
+        widget=forms.TextInput(
+            attrs={
+                'class': 'my-content form-control',
+                'placeholder': 'Enter the Content',
+                'maxlength': 500,
+            }
+        ),
+        error_messages={
+            'required': '포스터 경로는 필수 항목입니다',
+        },
+    )
+
+    class Meta:
+        model = Movie
+        fields = '__all__'
+```
+
+
+
+### 5. movies/views.py 
+
+- 오류, url 이동, html 이동 : `import render, redirect, get_object_or_404`
+
+- view decorator : `from django.views.decorators.http import require_safe, require_http_methods, require_POST`
+
+- models.py : `from .models import Movie`
+
+- forms.py : `from .forms import MovieForm`
 
 - [views.py]
 
@@ -575,13 +463,12 @@ def update(request, pk):
 
 
 
-### (5) templates/movies
+### 6. movies/templates/movies
 
-> views.py : if, else
->
-> forms.py : form태그 (POST - `create, update`) 
->
-> html : a태그(GET - `new`), form태그(GET - `edit`, POST - `delete`)
+#### (1) index.html 
+
+- a태그 GET - `new` (CREATE 이전) 
+- div태그 READ
 
 - [index.html]
 
@@ -617,6 +504,12 @@ def update(request, pk):
 {% endblock content %}
 ```
 
+#### (2) detail.html
+
+- form태그 
+  - GET - `edit`  (UPDATE 이전)
+  - POST - `delete` DELETE
+
 - [detail.html]
 
 ```python
@@ -650,6 +543,12 @@ def update(request, pk):
 {% endblock content %}
 ```
 
+#### (3) form.html
+
+- form태그 
+  - POST - `create` (new 이후)
+  - POST - `update` (edit 이후)
+
 - [form.html]
 
 ```python
@@ -679,108 +578,7 @@ def update(request, pk):
 
 
 
-### (6) forms.py (forms.ModelForm)
-
-> models.py : `from .models import Movie` `class MovieForm(forms.ModelForm):` `class Meta:`
->
-> 입력 : `forms.CharField()`
->
-> 라벨 : `label`
->
-> 너비 길이 등 속성 : `widget = forms.TextInput( attrs = {} )`
->
-> 에러메세지 : `error_messages={'required': '제목은 필수 항목입니다',},`
-
-- [forms.py]
-
-```python
-from django import forms
-from .models import Movie
-
-class MovieForm(forms.ModelForm):
-    title = forms.CharField(
-        label='제목',
-        widget=forms.TextInput(
-            attrs={
-                'class': 'my-title form-control',
-                'placeholder': 'Enter the Title',
-                'maxlength': 100,
-            }
-        ),
-        error_messages={
-            'required': '제목은 필수 항목입니다',
-        },
-    )
-    overview = forms.CharField(
-        label='줄거리',
-        widget=forms.Textarea(
-            attrs={
-                'class': 'my-content form-control',
-                'placeholder': 'Enter the Content',
-                'rows': 5,
-                'cols': 30,
-            }
-        ),
-        error_messages={
-            'required': '줄거리는 필수 항목입니다',
-        },
-    )
-    poster_path = forms.CharField(
-        label='포스터 경로',
-        widget=forms.TextInput(
-            attrs={
-                'class': 'my-content form-control',
-                'placeholder': 'Enter the Content',
-                'maxlength': 500,
-            }
-        ),
-        error_messages={
-            'required': '포스터 경로는 필수 항목입니다',
-        },
-    )
-
-    class Meta:
-        model = Movie
-        fields = '__all__'
-```
-
-
-
-### (7) static/articles/image
-
-> `pip install Pillow` : models.ImageField(blank=True) 이미지삽입 (models.py)
->
-> `{% load static %}`
->
-> `<form>` `enctype="multipart/form-data"`
->
-> `<input>` ` accept="image/*"`
-
-
-
-### (8) media 
-
-
-
-### (9) imagekit
-
-> `pip install Pillow` : models.ImageField(blank=True) 이미지삽입 (models.py)
->
-> `pip install django-imagekit` : 이미지 리사이즈 **(settings.py)**
->
-> `ImageSpecField` CACHE/images/8k/ 썸네일 새롭게 폴더 생성 후 자동 저장 (db에서 확인할 수 없다 원본 데이터를 그 순간 규격을 새롭게 보여주는 것)
->
-> `ProcessedImageField` media / image 새롭게 폴더 생성 후 자동 저장 (db에서 확인할 수 있다)
-
-- [card.html]
-
-```python
-# 생략
-```
-
-
-
-### (10) admin.py
+### 7. movies/admin.py
 
 - [admin.py]
 
@@ -789,44 +587,17 @@ from django.contrib import admin
 from .models import Movie
  
 admin.site.register(Movie)
-
-# 아이디 admin
-# 비밀번로 123456
 ```
 
 
 
-### 4. 결과 
+---
 
-### (1) index
-
-![image-20210319160615664](README.assets/image-20210319160615664.png)
-
-### (2) detail
-
-![image-20210319160706899](README.assets/image-20210319160706899.png)
-
-### (3) create
-
-![image-20210319160805252](README.assets/image-20210319160805252.png)
-
-### (4) update
-
-### ![image-20210319160731769](README.assets/image-20210319160731769.png)
+## 후기
 
 
 
-### (5) pjt05
-
-![image-20210319160929095](README.assets/image-20210319160929095.png)
-
-### (6) movies
-
-![image-20210319160958533](README.assets/image-20210319160958533.png)
-
-### 5. 소감
-
-> 지난번 첫 페어 프로젝트와 다르게 여성분과 페어하면서 편한 점이 존재했다. 더 섬세한 희진님의 관찰력에 감탄했고, 서로 오타가 없는지 검토하는 과정도 피드백이 잘 되어서 좋았다. 페어 프로젝트는 많은 분량의 코딩을 스스로 검토하기 어려울 때 피드백을 주고 즉석에서 토의하며 코딩을 작성한다는 점이 가장 큰 장점으로 느껴진다. 
+지난번 첫 페어 프로젝트와 다르게 여성분과 페어하면서 편한 점이 존재했다. 더 섬세한 희진님의 관찰력에 감탄했고, 서로 오타가 없는지 검토하는 과정도 피드백이 잘 되어서 좋았다. 페어 프로젝트는 많은 분량의 코딩을 스스로 검토하기 어려울 때 피드백을 주고 즉석에서 토의하며 코딩을 작성한다는 점이 가장 큰 장점으로 느껴진다. 
 
 
 
