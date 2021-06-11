@@ -1,217 +1,477 @@
-# pjt07
+# Project_Django_Review
 
-#### 서울 3반 이민아 21.04.02
-
-
-
-> **Django**
->
-> COMMUNITY CRUD(create, index, update, delete, **like)**
->
-> COMMENT CR**(comments_create, comments_delete)**
->
-> AUTHENTIFICATION CRUD(signup, login, logout, update, delete, password, **profile, follow)**
+### 서울 3반 이민아 21.04.02
 
 
 
-### 0. pair pjt
-
-> navigator : 서울 3반 이민아
->
 > driver : 서울 3반 정희진
-
-### (1) git lab
-
-> git lab maintainer 추가
-
-###  (2) git bash
-
-- [Terminal]
-
-```python
-git log --oneline 
-# 동일 상태 확인
-
-git push origin master
-git commit -m "update"
-# 작성한 사람
-
-git pull origin master 
-git clone 주소
-# 받는 사람
-# operational error (db.sqlite3는 그대로 전송이 안 됨, .gitignore)
-# movies.json으로 데이터를 보여준다
-```
-
-### (3) data
-
-> `pip install -r requirements.txt`
 >
-> `python manage.py migrate`
+> navigator : 서울 3반 이민아
 
-- [Terminal]
 
-```python
-pip install -r requirements.txt
-# 버젼 조회 및 다운로드
-# requirements.txt 조회 후 다운로드 및 설치
 
-python manage.py migrate
-```
+---
 
-### (4) 명령어
+## Index
 
-> `django-admin startproject pjt07 `
+
+
+- [Image](#image)
+- [Command](#command)
+- [pjt07 (Project)](#pjt07)
+- [community (App)](#community)
+- [accounts (App)](#accounts)
+- [후기](#후기)
+
+
+
+---
+
+## Image
+
+### 
+
+### 1. Home 
+
+#### (1) / (READ)
+
+![Null](README.assets/Null.PNG)
+
+
+
+### 2. community 
+
+### 2.1 Review CRUD
+
+#### (1) community/index (login) (READ)
+
+![community_index(login)](README.assets/community_index(login).PNG)
+
+#### (2) community/index (logout) (READ)
+
+![community_index(logout)](README.assets/community_index(logout).PNG)
+
+#### (3) community/detail (READ)
+
+![community_detail](README.assets/community_detail.PNG)
+
+#### (4) community/create (CREATE)
+
+![community_create](README.assets/community_create.PNG)
+
+#### (5) community/update (UPDATE)
+
+![community_update](README.assets/community_update.PNG)
+
+### 
+
+### 2.2 Comment CD
+
+#### (1) community/comment_create (CREATE)
+
+#### (2) community/comment_delete (DELETE)
+
+![community_comment(create, delete)](README.assets/community_comment(create, delete).PNG)
+
+
+
+### 2.3 Like
+
+#### (1) community/like (좋아요)
+
+![community_like](README.assets/community_like.PNG)
+
+#### (2) community/like (좋아요 취소)
+
+![community_like2](README.assets/community_like2-1617528213661.PNG)
+
+### 3. accounts 
+
+### 3.1 Authentification CUD
+
+#### (1) accounts/signup (CREATE)
+
+![accounts_signup](README.assets/accounts_signup.PNG)
+
+#### (2) accounts/update (UPDATE)  
+
+![accounts_update](README.assets/accounts_update.PNG)
+
+#### (3) accounts/password (UPDATE)  
+
+![accounts_password](README.assets/accounts_password.PNG)
+
+#### (4) accounts/delete (DELETE)
+
+
+
+### 3.2 Authentification Login / Logout
+
+#### (1) accounts/login (social_login)  
+
+> 구글 소셜 로그인 기능 포함
+
+![accounts_login](README.assets/accounts_login.PNG)
+
+![accounts_social_login](README.assets/accounts_social_login.PNG)
+
+#### (2) accounts/logout
+
+
+
+### 3.3 Profile 
+
+#### (1) accounts/follow
+
+> 타인의 프로필에서는 follow
+
+![accounts_follow](README.assets/accounts_follow.PNG)
+
+![accounts_follow2](README.assets/accounts_follow2.PNG)
+
+#### (2) accounts/profile
+
+> 자신의 프로필에서는 follow 불가 Review CREATE 가능
 >
-> `python manage.py startapp community`
->
-> `python manage.py startapp accounts`
+> user가 작성한 Review, Comment, Like 조회 및 이동 가능
 
-- 프로젝트 생성 (pjt folder)
-  - django-admin startproject pjt07 .(pjt07와 manage.py 바로 생성)
-  - django-admin startproject pjt07(pjt07와 pjt07/manage.py 생성)
-- app 생성 (app folder)
-  
-  - python manage.py startapp appname : app 생성
-- 서버 연결 (web)
-  
-  - python manage.py runserver : 페이지 연결
+![accounts_profile](README.assets/accounts_profile.PNG)
+
+### ![accounts_profile2](README.assets/accounts_profile2.PNG)
+
+![accounts_profile3](README.assets/accounts_profile3.PNG)
+
+
+
+----
+
+## Command
+
+
+
+### 1. 명령어 및 단축키
+
+### 1.1 Django Framework 
+
+#### (1) project 생성 (pjt)
+
+- django-admin startproject pjt07 .(pjt07와 manage.py 바로 생성)
+- django-admin startproject pjt07(pjt07와 pjt07/manage.py 생성)
+
+#### (2) app 생성 (app)
+
+- python manage.py startapp appname : app 생성 
+
+#### (3) server
+
+- python manage.py runserver : 웹페이지 서버 연결
+
+#### (4) migration (app/migrations)
+
+- python manage.py makemigrations : migrations 폴더 아래 하위 파일 생성
+- python manage.py migrate : 실행할 때마다 명령어
+- python manage.py shell_plus : OOP 입력
+- python manage.py seed articles --number=5 : articles의 앱에 5개의 가짜 데이터 생성
+
+#### (5)  json (app/fixtures)
+
+- python manage.py dumpdata articles.article > articles.json : fixtures  폴더 아래 articles.json으로 articles.article 정보 생성
+- python manage.py loaddata articles/articles.json : fixtures 폴더 아래 articles/articles.json db에 불러오기
+
+#### (6) 관리자 (app/admin.py)
+
+- python manage.py createsuperuser : 관리자 계정 생성
+
+#### (7) 시험 (app/tests.py)
+
+- python manage.py test : 테스트 함수 실행
+
+#### (8) 설치 (pjt/settings.py)
+
+- pip install django : django 설치
+
+- pip install django-extensions : django-extensions 설치 
+
+  - settings.py
+
+    - INSTALLED_APPS
+
+      `'django_extensions',` 
+
+- pip install Pillow : 이미지삽입 
+
+  - models.py
+
+    `models.ImageField(blank=True)` 
+
+  - views.py
+
+    `request.FILES` 
+
+  - templates/html
+
+    `{% load static %}`
+
+    `<form>` `enctype="multipart/form-data"` 
+
+    `<input>` ` accept="image/*"` 
+
+- pip install django-bootstrap-v5 : 부트스트랩 설치 
+
+  - settings.py
+
+    - INSTALLED_APPS
+
+      `'bootstrap5',` 
+
+  - templates/html
+
+    `{% load bootstrap5 %}`
+
+- pip install django-allauth : 소셜 로그인 설치  
+
+  - settings.py
+
+    - INSTALLED_APPS
+
+      `'django.contrib.sites',`
+
+      `  'allauth',`
+
+      `'allauth.account',`
+
+      ` 'allauth.socialaccount',`
+
+      ` 'allauth.socialaccount.providers.google',` 
+
+    - `SITE_ID = 1`
+
+  - urls.py (pjt/urls.py)
+
+    `path('accounts/', include('allauth.urls')),` 
+
+  - templates/html
+
+    `{% load socialaccount %}` 
+
+- pip install django-imagekit : 이미지 리사이즈 
+
+  - settings.py
+
+    - INSTALLED_APPS
+
+      `'imagekit',` 
+
+  - models.py
+
+    - `models.ImageSpecField()` 
+
+      CACHE/images/8k/ 썸네일 새롭게 폴더 생성 후 자동 저장 
+
+      (db에서 확인 불가 원본을 그 순간 규격을 새롭게 보여주기)
+
+    - `models.ProcessedImageField()` 
+
+      media / image 새롭게 폴더 생성 후 자동 저장 
+
+      (db에서 확인 가느) 
+
+- pip install django-bootstrap-pagination : 페이지목록 부트스트랩   
+
+  - settings.py
+
+    - INSTALLED_APPS
+
+      `'bootstrap_pagination',`
+
+  - templates/html
+
+    ` {% load bootstrap_pagination %}` 
+
+    `{% bootstrap_paginate page_obj range=3 %}` 
+
+- pip install django-cors-headers : cors-headers 생성 (django와 vuex)
+
+  - settings.py
+
+    - INSTALLED_APPS
+
+      `'corsheaders',` 
+
+    - `CORS_ALLOW_ALL_ORIGINS` 
+
+      특정 Origin만 선택적으로 허용
+
+      ```python
+      # pjt/settings.py
+      CORS_ALLOWED_ORIGINS = [
+          "https://example.com",
+          "https://sub.example.com",
+          "http://localhost:8080",
+          "http://127.0.0.1:9000"
+      ]
+      ```
+
+      모든 Origin 허용
+
+      ```python
+      # pjt/settings.py
+      CORS_ALLOW_ALL_ORIGINS = True
+      ```
+
+    - `MIDDLEWARE` 
+
+      ```python
+      # pjt/settings.py
+      MIDDLEWARE = [
+          'corsheaders.middleware.CorsMiddleware',
+          'django.middleware.common.CommonMiddleware',
+      ]
+      ```
+
+- pip install djangorestframework-jwt : 토큰베이스 아이디 로그인
+
+  - urls.py (accounts/urls.py)
+
+    - `from rest_framework_jwt.views import obtain_jwt_token`
+
+    - urlpatterns
+
+      `path('api-token-auth/', obtain_jwt_token),`
+
+  - setting.py
+
+    ```python
+    # pjt/settings.py
+    import datetime
+    
+    JWT_AUTH = {
+        'JWT_EXPIRATION_DELTA': datetime.timedelta(days=1),
+        # seconds=300
+        }
+    ```
+
+- pip install Faker django-extensions : DB 더미데이터 
+
+  10개의 리뷰에 10개의 댓글은 Faker (python manage.py shell_plus)
+
+- pip install django-seed : 가짜 데이터 생성 
+
+  - settings.py
+
+    - INSTALLED_APPS
+
+      `'django_seed',`
+
+- pip install djangorestframework : DRF 설치 
+
+  - settings.py
+
+    - INSTALLED_APPS
+
+      `'rest_framework',` 
+
+- pip install -U drf-yasg : Swagger
+
+  - settings.py
+
+    - INSTALLED_APPS
+
+      `'drf_yasg',`
+
+  - views.py
+
+    `from drf_yasg.utils import swagger_auto_schema `
+
+    `@swagger_auto_schema(methods=['POST'], request_body=ArticleSerializer)`
+
+  - urls.py
+
+    - `from rest_framework import permissions` 
+
+    - `from drf_yasg.views import get_schema_view `
+
+    - `from drf_yasg import openapi `
+
+    - urlpatterns
+
+      `path('swagger/', schema_view.with_ui('swagger')),`
+
+    - schema_view 
+
+      ```python
+      # urls.py
+      schema_view = get_schema_view(
+         openapi.Info(
+            title="Snippets API",
+            default_version='v1',
+         )
+      )
+      ```
+
+- pip install django-debug-toolbar
+
+  - settings.py
+
+    - INSTALLED_APPS
+
+      `'debug_toolbar',`  ( `'django.contrib.staticfiles',`보다 아래에 기입)
+
+    - `MIDDLEWARE` 
+
+      `'debug_toolbar.middleware.DebugToolbarMiddleware',`
+
+    -  `INTERNAL_IPS`
+
+      `'127.0.0.1',`
+
+  - urls.py
+
+    - `import debug_toolbar` 
+
+    - urlpatterns
+
+      `path('__debug__/', include(debug_toolbar.urls)),` 
+
+- humanize
+
+  - settings.py
+
+    - INSTALLED_APPS
+
+      `'django.contrib.humanize',`  
+
+  - templates/html
+
+    `{% load humanize %}` 
+
+
+
+### 1.2 가상환경
+
 - 버젼 (requirements.txt)
   - pip freeze > requirements.txt : 버젼 저장
   - pip install -r requirements.txt : 버젼 조회 및 다운로드
-- 가상환경 (venv folder)
+- 가상환경 (venv)
   - python -m venv venv  :  가상환경 폴더 생성
   - source venv/Scripts/activate : 가상환경 실행
   - deactivate : 가상환경 해제
-  - pip list : 가상환경 설치된 목록 확인
-- 설치 (settings.py)
-  - pip install django : django 설치
-  
-  - pip install django-extensions : django-extensions 설치 (settings.py)
-  
-    - `'django_extensions',` (settings.py)
-  
-  - pip install Pillow : 이미지삽입 (models.py/views.py)
-  
-    - `models.ImageField(blank=True)`  (models.py)
-  
-    - `{% load static %}` (html)
-    - `<form>` `enctype="multipart/form-data"` (html)
-    - `<input>` ` accept="image/*"` (html)
-    - `request.FILES` (views.py)
-  
-  - pip install django-bootstrap-v5 : 부트스트랩 설치 (settings.py)
-  
-    - `'bootstrap5',` (settings.py)
-    - `{% load bootstrap5 %}` (html)
-  
-  - pip install django-allauth : 소셜 로그인 설치  (settings.py/urls.py)
-  
-    - `'django.contrib.sites',`
-  
-    - `  'allauth',`
-  
-    - `'allauth.account',`
-  
-    - ` 'allauth.socialaccount',`
-  
-    - ` 'allauth.socialaccount.providers.google',` 
-  
-    - `SITE_ID = 1` (settings.py)
-  
-    - `path('accounts/', include('allauth.urls')),` (urls.py)
-  
-    - `{% load socialaccount %}` (login.html)
-  
-  - pip install django-imagekit : 이미지 리사이즈 (settings.py/models.py)
-  
-    - `'imagekit',` (settings.py)
-  
-    - `ImageSpecField` CACHE/images/8k/ 썸네일 새롭게 폴더 생성 후 자동 저장 (db에서 확인할 수 없다 원본 데이터를 그 순간 규격을 새롭게 보여주는 것) (models.py)
-    - `ProcessedImageField` media / image 새롭게 폴더 생성 후 자동 저장 (db에서 확인할 수 있다) (models.py)
-  
-  - pip install django-bootstrap-pagination : 페이지목록 부트스트랩   (settings.py)
-  
-    - `'bootstrap_pagination',` (settings.py)
-    - ` {% load bootstrap_pagination %}` (index.html)
-    - `{% bootstrap_paginate page_obj range=3 %}` (index.html)
-  
-  - humanize
-  
-    - `'django.contrib.humanize',`  (settings.py)
-    - `{% load humanize %}` (html)
-- 관리자 (admin.py)
-  
-  - python manage.py createsuperuser : 관리자 계정 생성
-- DB 동기화 (app/migrations, app/fixtures)
-  - python manage.py makemigrations : migrations 폴더 아래 하위 파일 생성
-  - python manage.py migrate : 실행할 때마다 명령어
-  - python manage.py dumpdata articles.article > articles.json : fixtures  폴더 아래 articles.json으로 articles.article 정보 생성
-  - python manage.py loaddata articles/articles.json : fixtures 폴더 아래 articles/articles.json db에 불러오기
-  - python manage.py shell_plus : OOP 입력
-- 단축키
-  - Ctrl + [ or ] -> 들여쓰기, 내어쓰기
-  - Alt + <방향키> -> 해당 커서에 있는 행 내용을 위아래로 이동
-  - Ctrl + Alt + 위/아래 화살표 -> 위아래로 커서를 늘려서 동시에 여러줄 수정할 수 있도록 하는 기능
-  - CTRL + D 해당 단어 동시 수정
-  - ALT + CLICK  모두 한번에 잡아줘 수정하고싶은 부분들을 한번에 수정
-  - ALT + Shift + ↓or↑ 현재 커서가 있는 줄을 복사하여 아래에 붙여넣어준다
+  - pip list : 가상환경 site-packages 설치된 목록 확인
 
 
 
-### 1. virtual 
+### 1.3 Vs Code
 
-### (1) 가상환경 시작
+- Ctrl + [ or ] -> 들여쓰기, 내어쓰기
+- Alt + <방향키> -> 해당 커서에 있는 행 내용을 위아래로 이동
+- Ctrl + Alt + 위/아래 화살표 -> 위아래로 커서를 늘려서 동시에 여러줄 수정할 수 있도록 하는 기능
+- CTRL + D 해당 단어 동시 수정
+- ALT + CLICK  모두 한번에 잡아줘 수정하고싶은 부분들을 한번에 수정
+- ALT + Shift + ↓or↑ 현재 커서가 있는 줄을 복사하여 아래에 붙여넣어준다
 
-> `python -m venv venv`
 
-- [Terminal]
 
-```python
-python -m venv venv 
-# (python.exe 실행 / -module / module명 / 폴더이름)
-```
-
-### (2) 설치된 목록 확인
-
-> `Lib/site-packages/django`
-
-- [Terminal]
-
-```python
-pip list
-# site-packages 설치된 모든 목록
-```
-
-### (3) 가상화 실행
-
-> `source venv/Scripts/activate`
->
-> `deactivate`
-
-- [Terminal]
-
-```python
-source venv/Scripts/activate
-# 실행 상위폴덩/하위폴더명/실행
-(venv)
-# enter 이후 나타나는 메세지
-
-pip list
-# 설치된 목록 줄어든다
-
-deactivate
-# (venv)가 사라진다
-
-pip list
-# 설치된 목록 늘어난다
-```
-
-### (4) .gitignore 추가 
-
-> `gitignore.io` python windows 등 검색
->
-> `.gitignore` 생성 후 복사 붙이기 (`venv` , `db.sqlite` 포함)
+### 2. .gitignore 
 
 - [.gitignore]
 
@@ -237,58 +497,11 @@ venv.bak/
 pythonenv*
 ```
 
-### (5) django 가상환경
 
-- [Terminal]
 
-```python
-python -m venv venv 
-# (python.exe 실행 / -module / module명 / 폴더이름)
+### 3. custom user 
 
-source venv/Scripts/activate
-# 실행 상위폴덩/하위폴더명/실행
-
-pip install django
-# django 설치
-pip install django-extensions
-# django-extensions 설치
-pip install django-bootstrap-v5
-# bootstrap5 설치
-pip install Pillow
-# ImageField
-pip install django-imagekit
-# ProcessedImageField
-pip install django-allauth
-# social login
-pip install django-bootstrap-pagination
-# pagination
-python manage.py shell_plus
-# OOP 입력
-
-django-admin startproject pjt07 .
-# 프로젝트 설치
-# django-admin startproject crud .(crud와 manage.py 바로 생성)
-# django-admin startproject crud (crud/crud와 crud/manage.py 생성)
-
-python -m pip freeze
-# 버젼 확인 
-# 현재 사용하는 라이브러리를 고정하고 저장 pip freeze(출력)
-
-pip freeze > requirements.txt
-# 버젼 저장
-# requirements.txt 에 pip freeze 출력 결과 저장
-# requirements.txt가 없어도 생성
-
-pip install -r requirements.txt
-# 버젼 조회 및 다운로드
-# requirements.txt 조회 후 다운로드 및 설치
-
-python manage.py startapp community
-python manage.py startapp accounts
-# 앱 설치
-```
-
-### (6) custom user 설정
+#### (1) pjt07(pjt)
 
 > makemigrations, migrate 명령어 이전에 설정
 >
@@ -299,6 +512,8 @@ python manage.py startapp accounts
 # pjt07(pjt)
 AUTH_USER_MODEL = 'accounts.User'
 ```
+
+#### (2) community(app)
 
 - [models.py]
 
@@ -315,6 +530,8 @@ class Comment(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     review = models.ForeignKey(Review, on_delete=models.CASCADE)
 ```
+
+#### (3) accounts(app)
 
 - [models.py]
 
@@ -341,9 +558,11 @@ admin.site.register(User, UserAdmin)
 
 
 
-### 2. pjt07 (pjt) 
+----
 
-### (1) urls.py
+## pjt07
+
+### 1. pjt07/urls.py
 
 - [urls.py]
 
@@ -368,7 +587,7 @@ urlpatterns = [
 
 
 
-### (2) settings.py 
+### 2. pjt07/settings.py 
 
 ```python
 INSTALLED_APPS = [
@@ -433,7 +652,9 @@ SITE_ID = 1
 
 
 
-### (3) templates/base.html(nav.html)
+### 3. pjt07/templates
+
+#### (1) base.html
 
 - [base.html]
 
@@ -465,6 +686,8 @@ SITE_ID = 1
 </body>
 </html>
 ```
+
+#### (2) nav.html (base.html)
 
 - [nav.html]
 
@@ -534,19 +757,11 @@ SITE_ID = 1
 
 
 
-### (4) static/stylesheets/style.css
+----
 
-- [style.css]
+## community
 
-```python
-# 생략
-```
-
-
-
-### 3. community (app)
-
-### (1) urls.py
+### 1. community/urls.py
 
 - [urls.py]
 
@@ -569,17 +784,7 @@ urlpatterns = [
 
 
 
-### (2) fixtures/
-
-- [.json]
-
-```python
-# 생략
-```
-
-
-
-### (3) models.py
+### 2. community/models.py
 
 - [models.py]
 
@@ -623,7 +828,7 @@ class Comment(models.Model):
 
 
 
-### (4) forms.py (forms.ModelForm)
+### 3. community/forms.py 
 
 - [forms.py]
 
@@ -646,7 +851,7 @@ class CommentForm(forms.ModelForm):
 
 
 
-### (5) views.py 
+### 4. community/views.py 
 
 - [views.py]
 
@@ -785,7 +990,9 @@ def like(request, review_pk):
 
 
 
-### (6) templates/community
+### 5. community/templates/community
+
+#### (1) index.html
 
 - [index.html]
 
@@ -831,6 +1038,8 @@ def like(request, review_pk):
 
 {% endblock %}
 ```
+
+#### (2) detail.html
 
 - [detail.html]
 
@@ -958,6 +1167,8 @@ def like(request, review_pk):
 {% endblock %}
 ```
 
+#### (3) create.html
+
 - [create.html]
 
 ```python
@@ -979,6 +1190,8 @@ def like(request, review_pk):
   <a href="{% url 'community:index' %}" class="btn btn-light">BACK</a>
 {% endblock %}
 ```
+
+#### (4) update.html
 
 - [update.html]
 
@@ -1003,7 +1216,7 @@ def like(request, review_pk):
 
 
 
-### (7) admin.py
+### 6. community/admin.py
 
 - [admin.py]
 
@@ -1018,11 +1231,11 @@ admin.site.register(Review, ReviewAdmin)
 admin.site.register(Comment)
 ```
 
+---
 
+## accounts
 
-### 4. accounts (app)
-
-### (1) urls.py
+### 1. accounts/urls.py
 
 - [urls.py]
 
@@ -1045,17 +1258,7 @@ urlpatterns = [
 
 
 
-### (2) fixtures/
-
-- [.json]
-
-```python
-# 생략
-```
-
-
-
-### (3) models.py
+### 2. accounts/models.py
 
 - [models.py]
 
@@ -1072,7 +1275,35 @@ class User(AbstractUser):
 
 
 
-### (4) views.py
+
+
+### 3. accounts/forms.py 
+
+- [forms.py]
+
+```python
+from django.contrib.auth.forms import UserChangeForm, UserCreationForm
+from django.contrib.auth import get_user_model
+
+class CustomUserChangeForm(UserChangeForm):
+    class Meta:
+        model = get_user_model()
+        # models.py : settings.AUTH_USER_MODEL 
+        # views.py forms.py : get_user_model()
+        fields = ('email', 'first_name', 'last_name')
+        # 제외해야 할 부분이 많아서 지정
+
+class CustomUserCreationForm(UserCreationForm):
+    class Meta(UserCreationForm.Meta):
+        model = get_user_model()
+        # models.py : settings.AUTH_USER_MODEL 
+        # views.py forms.py : get_user_model()
+        fields = UserCreationForm.Meta.fields + ('email',) 
+```
+
+
+
+### 4. accounts/views.py
 
 - [views.py]
 
@@ -1210,33 +1441,9 @@ def follow(request, user_id):
 
 
 
-### (5) forms.py 
+### 5. accounts/templates/accounts
 
-- [forms.py]
-
-```python
-from django.contrib.auth.forms import UserChangeForm, UserCreationForm
-from django.contrib.auth import get_user_model
-
-class CustomUserChangeForm(UserChangeForm):
-    class Meta:
-        model = get_user_model()
-        # models.py : settings.AUTH_USER_MODEL 
-        # views.py forms.py : get_user_model()
-        fields = ('email', 'first_name', 'last_name')
-        # 제외해야 할 부분이 많아서 지정
-
-class CustomUserCreationForm(UserCreationForm):
-    class Meta(UserCreationForm.Meta):
-        model = get_user_model()
-        # models.py : settings.AUTH_USER_MODEL 
-        # views.py forms.py : get_user_model()
-        fields = UserCreationForm.Meta.fields + ('email',) 
-```
-
-
-
-### (6) templates/accounts
+#### (1) login.html 
 
 - [login.html]
 
@@ -1264,6 +1471,8 @@ class CustomUserCreationForm(UserCreationForm):
 {% endblock %}
 ```
 
+#### (2) signup.html
+
 - [signup.html]
 
 ```python
@@ -1286,6 +1495,8 @@ class CustomUserCreationForm(UserCreationForm):
 {% endblock %}
 ```
 
+#### (3) update.html
+
 - [update.html]
 
 ```python
@@ -1304,6 +1515,8 @@ class CustomUserCreationForm(UserCreationForm):
 {% endblock %}
 ```
 
+#### (4) password.html
+
 - [password.html]
 
 ```python
@@ -1321,6 +1534,8 @@ class CustomUserCreationForm(UserCreationForm):
   </form>
 {% endblock %}
 ```
+
+#### (5) profile.html
 
 - [profile.html]
 
@@ -1438,6 +1653,8 @@ class CustomUserCreationForm(UserCreationForm):
 {% endblock content %}
 ```
 
+#### (6) card.html (profile.html)
+
 - [card.html]
 
 ```python
@@ -1464,11 +1681,13 @@ class CustomUserCreationForm(UserCreationForm):
 
 
 
-### (7) static/accounts/image/profile.jpg
+### 6. accounts/static/accounts/images
+
+> 프로필 이미지 profile.img 
 
 
 
-### (8) admin.py
+### 7. accounts/admin.py
 
 - [admin.py]
 
@@ -1483,87 +1702,19 @@ admin.site.register(User, UserAdmin)
 
 
 
-### 5. media
+----
 
+## media
 
+> 리뷰에 첨부된 사진들이 저장되는 폴더
 
-### 6. 결과 
+### 
 
-### (1) /
+---
 
-![Null](README.assets/Null.PNG)
+## 후기
 
-### (2) community/index (login/logout)
-
-![community_index(login)](README.assets/community_index(login).PNG)
-
-![community_index(logout)](README.assets/community_index(logout).PNG)
-
-### (3) community/detail
-
-![community_detail](README.assets/community_detail.PNG)
-
-### (4)  community/create
-
-![community_create](README.assets/community_create.PNG)
-
-### (5) community/comment_create(delete)
-
-![community_comment(create, delete)](README.assets/community_comment(create, delete).PNG)
-
-### (6) community/update
-
-![community_update](README.assets/community_update.PNG)
-
-### (7) community/like
-
-![community_like](README.assets/community_like.PNG)
-
-![community_like2](README.assets/community_like2-1617528213661.PNG)
-
-### (8) accounts/signup
-
-![accounts_signup](README.assets/accounts_signup.PNG)
-
-### (9) accounts/login(social_login)
-
-![accounts_login](README.assets/accounts_login.PNG)
-
-![accounts_social_login](README.assets/accounts_social_login.PNG)
-
-### (10) accounts/update
-
-![accounts_update](README.assets/accounts_update.PNG)
-
-### (11) accounts/follow
-
-![accounts_follow](README.assets/accounts_follow.PNG)
-
-![accounts_follow2](README.assets/accounts_follow2.PNG)
-
-
-
-### (12) accounts/password
-
-![accounts_password](README.assets/accounts_password.PNG)
-
-
-
-### (13) accounts/profile
-
-![accounts_profile](README.assets/accounts_profile.PNG)
-
-### ![accounts_profile2](README.assets/accounts_profile2.PNG)
-
-![accounts_profile3](README.assets/accounts_profile3.PNG)
-
-
-
-
-
-### 6. 소감
-
-> 희진님과 두번째 페어로 이루어지며, 4번의 페어 프로젝트 중 같은 페어를 2번씩 만나는 운명적인 일이 계속 일어났다. 희진님과 공통적 취미인 베이킹을 이야기하다가 프로필 피드를 베이킹 사진으로 만들자는 계획을 세우면서 profile.html에 card.html을 include 하는 작업에 공을 들였다. 프로필 사진은 부트스트랩을 이용하여 static image로 희진님이 만드신 다쿠아즈를 프로필 사진으로 지정했다. 프로필 사진도 편집하여 저장하는 기능까지 구현하는 것은 다음 기회로 미루었지만 시도해보면 좋을 것 같다. 그리고 피드의 사진들은 내가 찍은 사진으로 업로드하다가 단순히 imagefield를 사용하면 크기가 다르게 업로드 되어 예쁘지 않아 processedimagefiled를 사용하였다. 하지만 인자를 resizetofill을 추가하지 않아 같은 문제가 발생하여 다시 인자를 추가한 후 글을 작성하여 1:1 모양으로 크롭되어 이미지가 저장되도록 만들었다. 그리고 font awesome의 작고 귀여운 이모티콘들을 중간에 첨부하여 인스타와 유사해보이도록 노력해보았다. 오랜만에 d-flex를 사용해 위치 배치를 조정하려고 하는 것이 힘들었지만 다시 복습하며 더욱 연습하고 싶다는 의지를 다지는 시간이었다!
+희진님과 두번째 페어로 이루어지며, 4번의 페어 프로젝트 중 같은 페어를 2번씩 만나는 운명적인 일이 계속 일어났다. 희진님과 공통적 취미인 베이킹을 이야기하다가 프로필 피드를 베이킹 사진으로 만들자는 계획을 세우면서 profile.html에 card.html을 include 하는 작업에 공을 들였다. 프로필 사진은 부트스트랩을 이용하여 static image로 희진님이 만드신 다쿠아즈를 프로필 사진으로 지정했다. 프로필 사진도 편집하여 저장하는 기능까지 구현하는 것은 다음 기회로 미루었지만 시도해보면 좋을 것 같다. 그리고 피드의 사진들은 내가 찍은 사진으로 업로드하다가 단순히 imagefield를 사용하면 크기가 다르게 업로드 되어 예쁘지 않아 processedimagefiled를 사용하였다. 하지만 인자를 resizetofill을 추가하지 않아 같은 문제가 발생하여 다시 인자를 추가한 후 글을 작성하여 1:1 모양으로 크롭되어 이미지가 저장되도록 만들었다. 그리고 font awesome의 작고 귀여운 이모티콘들을 중간에 첨부하여 인스타와 유사해보이도록 노력해보았다. 오랜만에 d-flex를 사용해 위치 배치를 조정하려고 하는 것이 힘들었지만 다시 복습하며 더욱 연습하고 싶다는 의지를 다지는 시간이었다!
 
 
 
