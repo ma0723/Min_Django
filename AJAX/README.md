@@ -461,7 +461,7 @@ def recommended(request):
 
 
 
-### 2. movies / templates / recommended.html
+### 3. movies / templates / recommended.html
 
 - [recommended.html]
 
