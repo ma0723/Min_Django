@@ -24,8 +24,8 @@ def detail(request, movie_pk):
 
 @require_GET
 def recommended(request):
-    recent_movies = Movie.objects.order_by('-release_date')[:10]
-    old_movies = Movie.objects.order_by('release_date')[:10]
+    recent_movies = Movie.objects.order_by('-release_date')[:5]
+    old_movies = Movie.objects.order_by('release_date')[:5]
     
     context = {
         'recent_movies' : recent_movies,

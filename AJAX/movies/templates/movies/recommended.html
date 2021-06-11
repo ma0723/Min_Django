@@ -1,17 +1,23 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h4>Recommended Movie</h4>
-<div>
+<h3>Recommended Movie</h3>
+<h4>Recent Movie</h4>
+<div class="row">
   {% for movie in recent_movies %}
-    <p>{{ movie.title }}</p>
-    <img src="{{ movie.poster_path }}" alt="">
+    <div class="col-6">
+      <p>{{ movie.title }}</p>
+      <img src="{{ movie.poster_path }}" alt="">
+    </div>
   {% endfor %}
 </div>
-<div>
+<h4>Old Movie</h4>
+<div class="row">
   {% for movie in old_movies %}
-    <p>{{ movie.title }}</p>
-    <img src="{{ movie.poster_path }}" alt="">
+    <div class="col-6">
+      <p>{{ movie.title }}</p>
+      <img src="{{ movie.poster_path }}" alt="">
+    </div>
   {% endfor %}
 </div>
 {% endblock %}
