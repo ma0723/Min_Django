@@ -21,6 +21,7 @@
 - [pjt07 (Project)](#pjt07)
 - [community (App)](#community)
 - [accounts (App)](#accounts)
+- [media](#media)
 - [후기](#후기)
 
 
@@ -63,7 +64,7 @@
 
 ![community_update](README.assets/community_update.PNG)
 
-### 
+
 
 ### 2.2 Comment CD
 
@@ -352,8 +353,6 @@
     ```
 
 - pip install Faker django-extensions : DB 더미데이터 
-
-  10개의 리뷰에 10개의 댓글은 Faker (python manage.py shell_plus)
 
 - pip install django-seed : 가짜 데이터 생성 
 
@@ -1708,7 +1707,7 @@ admin.site.register(User, UserAdmin)
 
 > 리뷰에 첨부된 사진들이 저장되는 폴더
 
-### 
+
 
 ---
 
