@@ -72,7 +72,7 @@
 
 #### (2) community/comment_delete (DELETE)
 
-![community_comment(create, delete)](README.assets/community_comment(create, delete).PNG)
+![community_comment(create)](README.assets/community_comment(create).PNG)
 
 
 
